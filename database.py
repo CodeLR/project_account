@@ -1,6 +1,10 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase
 from sqlalchemy.orm import sessionmaker
+
+
+
+
 DATABASE="postgresql://myuser:qwerty@127.0.0.1:5432/mydatabase"
 
 engine=create_engine(DATABASE)
@@ -14,7 +18,8 @@ SessionLocal=sessionmaker(
 class Base(DeclarativeBase):
     pass
 
-
+from models.refresh_session import RefreshSession
+from models.user import User
 def get_db():
     db=SessionLocal()
     try:

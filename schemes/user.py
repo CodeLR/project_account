@@ -21,3 +21,10 @@ class UserResponse(BaseModel):
 
 class UserUpdate(BaseModel):
     name:str|None=None
+
+class UserListResponse(BaseModel):
+    total:int
+    items:list[UserResponse]
+
+class RefreshRequest(BaseModel):
+    refresh_token:str   
