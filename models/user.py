@@ -8,7 +8,7 @@ from datetime import timezone
 
 
 class User(Base):
-    __tablename__ = "Silvestr"
+    __tablename__ = "Users"
     id:Mapped[int]=mapped_column(primary_key=True)
     password_hash:Mapped[str]=mapped_column(String(255),nullable=False)
     name:Mapped[str]=mapped_column(String(30),nullable=False)

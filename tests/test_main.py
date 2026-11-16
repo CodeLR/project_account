@@ -49,7 +49,8 @@ def test_date_profile():
     access_tok = response.json()["access_token"]
     headers = {"Authorization": f"Bearer {access_tok}"}
     profile_response=client.get("/user/me",headers=headers)
-    assert profile_response.json()["name"]=="ALEX"
+    assert profile_response.json()["name"]=="string"
+    assert response.status_code == 200
 
 
 def test_login_wrong_password():

@@ -19,8 +19,19 @@ from dependencies import get_current_user
 from security import pwd_context
 from routers.auth import router as auth_router 
 from routers.users import users_router
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 logger=logging.getLogger(__name__)
 
 app.include_router(auth_router)
@@ -33,8 +44,9 @@ async def exc_handler(request:Request,exc:Exception):
 
 #---------------------------------------#
 Base.metadata.create_all(engine)
-# print(Base.metadata.tables.keys())
-# print("DATABASE:", engine.url)
+
+print(Base.metadata.tables.keys())
+print("DATABASE:", engine.url)
 #---------------------------------------#
 
 
